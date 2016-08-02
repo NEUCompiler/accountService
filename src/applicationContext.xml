@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+	xmlns:tx="http://www.springframework.org/schema/tx">
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3307/onlinebank">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>Account.hbm.xml</value>
+				<value>Client.hbm.xml</value>
+				<value>Dealinform.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="accountDAO" class="com.ob.dao.impl.AccountDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="clientDAO" class="com.ob.dao.impl.ClientDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="dealinformDAO" class="com.ob.dao.impl.DealinformDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="accountService" class="com.ob.service.impl.AccountServiceImpl"
+		scope="singleton">
+		<property name="dao" ref="accountDAO" />
+		<property name="clientDAO" ref="clientDAO" />
+		<property name="dealinformDAO" ref="dealinformDAO" />
+	</bean>
+	<bean id="clientService" class="com.ob.service.impl.ClientServiceImpl"
+		scope="singleton">
+		<property name="clientDAO" ref="clientDAO" />
+		<property name="dao" ref="accountDAO" />
+	</bean>
+	<bean id="AccountLossAction" class="com.ob.action.AccountLossAction"
+		scope="prototype">
+		<property name="accountService" ref="accountService"></property>
+	</bean>
+	<bean id="AccountDealPasswordAction" class="com.ob.action.AccountDealPasswordSetAction"
+		scope="prototype">
+		<property name="accountService" ref="accountService"></property>
+	</bean>
+	<bean id="AccountInformation" class="com.ob.action.AccountInformationAction"
+		scope="prototype">
+		<property name="accountService" ref="accountService"></property>
+		<property name="clientService" ref="clientService"></property>
+	</bean>
+</beans>

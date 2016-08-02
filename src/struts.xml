@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="defaults" namespace="/" extends="struts-default">
+		<action name="*_*" class="com.ob.action.{1}" method="{2}">
+			<!-- 储蓄卡挂失 -->
+			
+			<result name="showAccount">/AccountLoss/showAccount.jsp</result>
+			<result name="selectOkLoss">/AccountLoss/confirmPassword.jsp</result>
+			<result name="confirmFailedLoss">/AccountLoss/confirmPassword.jsp</result>
+			<result name="confirmSuccessLoss">/AccountLoss/Successloss.jsp</result>
+			
+			<!-- 交易密码设置 -->
+			<result name="showAccountDealPasswordSet">/AccountDealPsswordSet/showAccount.jsp</result>
+			<result name="selectOkDealPassword">/AccountDealPsswordSet/confirmPassword.jsp</result>
+			<result name="dealPasswordSetFailed">/AccountDealPsswordSet/confirmPassword.jsp</result>
+			<result name="dealPasswordSetSuccess">/AccountDealPsswordSet/dealPasswordSetSuccess.jsp</result>
+			<!-- input：当类型转换错误是返回input -->
+			<result name="input">/login.jsp</result>
+			
+			<!-- 储蓄卡账号查询 -->
+			<result name="showAccountInform">/AccountInformation/showAccount.jsp</result>
+			<result name="showAllAccountInform">/AccountInformation/showAllAccount.jsp</result>
+			<result name="selectOkAccount">/AccountInformation/showAccountInform.jsp</result>
+			
+			<!-- 储蓄卡交易信息查询 -->
+			<result name="showDealInform">/AccountDealInformation/showDealiInformation.jsp</result>
+			<result name="showSignAccount">/AccountDealInformation/showAccountSign.jsp</result>
+			<result name="selectOkSignAccount">/AccountDealInformation/othername.jsp</result>
+		    <result name="issuccess">/AccountDealInformation/showDealiInformationError.jsp</result>
+		</action>
+	</package>
+</struts>    
