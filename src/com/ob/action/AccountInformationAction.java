@@ -171,6 +171,7 @@ public class AccountInformationAction extends SuperAction implements
 		String b = request.getParameter("dddb");
 		if (null != a && a != "") {
 			sql += " and dealtime > str_to_date('" + a + "','%m/%d/%Y')";
+			
 		}
 		if (null != b && b != "") {
 			sql += " and dealtime < str_to_date('" + b + "','%m/%d/%Y')";
@@ -178,9 +179,11 @@ public class AccountInformationAction extends SuperAction implements
 		Query queryObject = session1.createQuery(sql);
 		queryObject.setString(0, accountid);
 		List result = queryObject.list();
+		
 		request.setAttribute("result", result);
 		return "showDealInformIsOpen";
-
+	
+		
 	}
 
 

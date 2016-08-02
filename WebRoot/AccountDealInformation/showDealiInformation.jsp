@@ -40,7 +40,7 @@
 					<tbody>
 						<c:forEach items="${request.result}" var="dealInfo">
 							<tr>
-								<td>${dealInfo.dealtime}</td>
+							    <td>${dealInfo.dealtime.getYear()+1900}年${dealInfo.dealtime.getMonth()+1}月${dealInfo.dealtime.getDate()}日</td>
 								<td>${dealInfo.deaamountl}</td>
 								<td>${dealInfo.accountid}</td>
 								<td>${dealInfo.dealinform}</td>
