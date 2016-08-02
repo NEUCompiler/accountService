@@ -42,7 +42,7 @@
 			<!-- 储蓄卡网上交易信息查询 -->
 			<result name="showAccountIsOpenInform">/AccountInformation/ShowAccountIsOpen.jsp</result>
             <result name="selectOkAccountIsopen">/AccountInformation/showAccountInform.jsp</result>
-            <result name="showDealInformIsOpen">/AccountDealInformation/showDealInform.jsp</result>
+            <result name="showDealInformIsOpen">/AccountInformation/showDealInform.jsp</result>
 
 
 		</action>

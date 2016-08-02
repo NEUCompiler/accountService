@@ -162,7 +162,11 @@ public class AccountInformationAction extends SuperAction implements
 		account = (Account) session.getAttribute("account");
 		account.setAccountid(account.getAccountid());
 		ArrayList<Dealinform> dealInfoList = new ArrayList<Dealinform>();
-		String sql = "from com.ob.model.Dealinform where 1=1 ";
+		session.getAttribute("account");
+		System.out.println(account);
+		String accountid=account.getAccountid();
+		System.out.println(accountid);
+		String sql = "from com.ob.model.Dealinform where accountid=? ";
 		String a = request.getParameter("ddda");
 		String b = request.getParameter("dddb");
 		if (null != a && a != "") {
@@ -172,6 +176,7 @@ public class AccountInformationAction extends SuperAction implements
 			sql += " and dealtime < str_to_date('" + b + "','%m/%d/%Y')";
 		}
 		Query queryObject = session1.createQuery(sql);
+		queryObject.setString(0, accountid);
 		List result = queryObject.list();
 		request.setAttribute("result", result);
 		return "showDealInformIsOpen";
