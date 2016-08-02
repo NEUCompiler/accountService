@@ -21,6 +21,13 @@
   </head>
   
   <body>
+  <div class="col-md-15 column">
+			<ul class="breadcrumb">
+				<li><a href="#">账户明细查询</a></li>
+				<li><a href="#">选择账户</a></li>
+				<li><a href="#">选择时间</a></li>
+				<li class="active">显示账户明细</li>
+			</ul>
   <table class="table">
 					<thead>
 						<tr>

@@ -12,6 +12,7 @@ public interface AccountService {
 	public DealinformDAO getDealinformDAO();
 	public Account findById(String id);
 	public ArrayList<String> getCdsOfClientByLoss(Account account);
+	public ArrayList<String> getCdsOfClientByAccount(Account account);
 	public boolean setLoss(Account account);
 	public ArrayList<String> getCdsOfClient(Account account);
 	public boolean setDealPassword(Account account);

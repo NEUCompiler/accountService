@@ -30,10 +30,10 @@
 		</div>
 		<div class="col-md-15 column">
 			<ul class="breadcrumb">
-				<li><a href="#">账户明细查询</a></li>
+				<li><a href="#">网上查询</a></li>
 				<li class="active">选择账户</li>
 				<li><a href="#">选择时间</a></li>
-				<li><a href="#">显示账户明细</a></li>
+				<li><a href="#">显示网上交易明细</a></li>
 			</ul>
 			<form action="AccountInformationAction_selectCard.action">
 

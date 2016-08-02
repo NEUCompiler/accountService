@@ -17,7 +17,7 @@ ModelDriven<Account> {
 	
 	
 	/**
-	 * ½»Ò×ÃÜÂëÉèÖÃ¡£
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½
 	 * @return
 	 */
 	public String setPassword() { 
@@ -26,12 +26,12 @@ ModelDriven<Account> {
 		String confirmPassword = request.getParameter("confirmPassword");
 		
 		if (!account.getDealpassword().equals(accountService.getDao().findById(account.getAccountid()).getDealpassword())) {
-			request.setAttribute("info", "µ±Ç°ÃÜÂëÊäÈë²»ÕıÈ·");
+			request.setAttribute("info", "ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë²»ï¿½ï¿½È·");
 		} else if (!chPassword.equals(confirmPassword)) {
-			request.setAttribute("info", "Á½´ÎÃÜÂë²»Ò»ÖÂ£¬ÇëÖØĞÂÊäÈë£¡");
+			request.setAttribute("info", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë²»Ò»ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡");
 			
 		} else if(!chPassword.matches("^[0-9]{6}$")) {
-			request.setAttribute("info", "ÃÜÂëÇëÊäÈë6¸öÊı×Ö");
+			request.setAttribute("info", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½6ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		} else {
 			account.setDealpassword(Integer.parseInt((chPassword)));
 			accountService.setDealPassword(account);
@@ -41,20 +41,20 @@ ModelDriven<Account> {
 	}
 	
 	/**
-	 * ÏÔÊ¾¿¨¡£
+	 * ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	public String showAccount() {
 		account.setClientid(111);
 		session.setAttribute("clientId", 111);
 		System.out.println("111");
-		request.setAttribute("accountIdList", accountService.getCdsOfClient(account));
+		request.setAttribute("accountIdList", accountService.getCdsOfClientByAccount(account));
 		System.out.println("a111");
 		return "showAccountDealPasswordSet";
 	}
 	
 	/**
-	 * Ñ¡Ôñ¿¨¡£
+	 * Ñ¡ï¿½ñ¿¨¡ï¿½
 	 * @return
 	 */
 	public String selectCard() {

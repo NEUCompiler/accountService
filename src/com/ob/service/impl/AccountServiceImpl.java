@@ -87,11 +87,10 @@ public class AccountServiceImpl implements  AccountService {
 		ArrayList<Account> accounts = (ArrayList<Account>)dao.findByClientid(account.getClientid());
 		
 		for (Account item : accounts) {
-			if(item.getIsopenob() == 1) {
+			if((item.getIsopenob() == 1)&&(item.getCdlimit()==0)) {
 				accountIdList.add(item.getAccountid());
 			
 			}
-			accountIdList.add(item.getAccountid());
 		}
 		
 		return accountIdList;
@@ -118,7 +117,7 @@ public class AccountServiceImpl implements  AccountService {
 		
 		for (Account item : accounts) {
 			
-			if (item.getIsloss() == 0) {
+			if ((item.getIsloss() == 0)&&(item.getCdlimit()==0)) {
 				accountIdList.add(item.getAccountid());
 			}
 		}
@@ -126,5 +125,19 @@ public class AccountServiceImpl implements  AccountService {
 		return accountIdList;
 	}
 
-
+	public ArrayList<String> getCdsOfClientByAccount(Account account) {
+		ArrayList<String> accountIdList = new ArrayList<String>();
+		ArrayList<Account> accounts = (ArrayList<Account>)dao.findByClientid(account.getClientid());
+		
+		for (Account item : accounts) {
+			
+			if (item.getCdlimit()==0) {
+				accountIdList.add(item.getAccountid());
+			}
+		}
+		
+		return accountIdList;
+	}
+	
+	
 }

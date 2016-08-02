@@ -5,8 +5,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<base href="<%=basePath%>">
-
 <title>储蓄卡挂失</title>
 
 <meta http-equiv="pragma" content="no-cache">

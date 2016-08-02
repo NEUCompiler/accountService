@@ -5,10 +5,10 @@
 		<action name="*_*" class="com.ob.action.{1}" method="{2}">
 			<!-- 储蓄卡挂失 -->
 			
-			<result name="showAccount">/AccountLoss/showAccount.jsp</result>
-			<result name="selectOkLoss">/AccountLoss/confirmPassword.jsp</result>
-			<result name="confirmFailedLoss">/AccountLoss/confirmPassword.jsp</result>
-			<result name="confirmSuccessLoss">/AccountLoss/Successloss.jsp</result>
+			<result name="zhangdabenshowAccount">/AccountLoss/showAccount.jsp</result>
+			<result name="zhangdabenselectOkLoss">/AccountLoss/confirmPassword.jsp</result>
+			<result name="zhangdabenconfirmFailedLoss">/AccountLoss/confirmPassword.jsp</result>
+			<result name="zhangdabenconfirmSuccessLoss">/AccountLoss/Successloss.jsp</result>
 			
 			<!-- 交易密码设置 -->
 			<result name="showAccountDealPasswordSet">/AccountDealPsswordSet/showAccount.jsp</result>
@@ -19,7 +19,8 @@
 			<result name="input">/login.jsp</result>
 			
 			<!-- 储蓄卡账号查询 -->
-			<result name="showAccountInform">/AccountInformation/showAccount.jsp</result>
+			<result name="showAccountInform">/AccountInformation/showAccountIsOpen.jsp</result>
+			<result name="showAccountIsOpenInform">/AccountInformation/showAccount.jsp</result>
 			<result name="showAllAccountInform">/AccountInformation/showAllAccount.jsp</result>
 			<result name="selectOkAccount">/AccountInformation/showAccountInform.jsp</result>
 			

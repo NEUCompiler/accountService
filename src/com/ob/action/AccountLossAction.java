@@ -33,7 +33,7 @@ public class AccountLossAction extends SuperAction implements
 		request.setAttribute("accountIdList",
 				accountService.getCdsOfClientByLoss(account));
 		System.out.println(accountService.getCdsOfClientByLoss(account));
-		return "showAccount";
+		return "zhangdabenshowAccount";
 	}
 
 
@@ -48,15 +48,15 @@ public class AccountLossAction extends SuperAction implements
 				.toString()));
 
 		if (!accountService.confirmSearchPassword(client)) {
-			return "confirmFailedLoss";
+			return "zhangdabenconfirmFailedLoss";
 		}
 		loss();
-		return "confirmSuccessLoss";
+		return "zhangdabenconfirmSuccessLoss";
 	}
 
 	public String selectCard() {
 		session.setAttribute("account", request.getParameter("selectAccount"));
-		return "selectOkLoss";
+		return "zhangdabenselectOkLoss";
 	}
 
 	@Override

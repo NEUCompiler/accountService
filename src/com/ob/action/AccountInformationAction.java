@@ -49,8 +49,16 @@ public class AccountInformationAction extends SuperAction implements
 		account.setClientid(111);
 		session.setAttribute("clientId", 111);
 		request.setAttribute("accountIdList",
-				accountService.getCdsOfClient(account));
+				accountService.getCdsOfClientByAccount(account));
 		return "showAccountInform";
+	}
+	
+	public String showAccountIsOpen() {
+		account.setClientid(111);
+		session.setAttribute("clientId", 111);
+		request.setAttribute("accountIdList",
+				accountService.getCdsOfSignClient(account));
+		return "showAccountIsOpenInform";
 	}
 
 	public String showAllAccount() {
@@ -83,6 +91,12 @@ public class AccountInformationAction extends SuperAction implements
 			request.setAttribute("cardType", "信用卡");
 		} else {
 			request.setAttribute("cardType", "储蓄卡");
+		}
+		
+		if (account.getIsopenob()==0) {
+			request.setAttribute("obType", "未开通网银");
+		} else {
+			request.setAttribute("obType", "已开通网银");
 		}
 
 		session.setAttribute("account", account);

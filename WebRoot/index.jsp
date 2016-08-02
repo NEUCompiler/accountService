@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <a href="AccountLossAction_showAccount.action">账户口头挂失</a></br>
      <a href="AccountDealPasswordSetAction_showAccount.action">密码修改</a><br>
      <a href="AccountInformationAction_showAccount.action">账户明细查询</a></br>
-     <a href="AccountInformationAction_showAccount.action">网上交易查询</a></br>
+     <a href="AccountInformationAction_showAccountIsOpen.action">网上交易查询</a></br>
      <a href="AccountSignAction_showAccount.action">关联账户管理</a><br>
      <a href="AccountInformationAction_showAllAccount.action">账户信息查询</a><br>
      
