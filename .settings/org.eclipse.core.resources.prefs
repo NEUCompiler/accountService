@@ -1,9 +1,9 @@
 eclipse.preferences.version=1
-encoding//WebRoot/AccountDealInformation/othername.jsp=UTF-8
-encoding//WebRoot/AccountDealInformation/showAccountSign.jsp=UTF-8
-encoding//WebRoot/AccountDealInformation/showDealiInformationError.jsp=UTF-8
+encoding//WebRoot/AccountDealInformation/showAccountInform.jsp=UTF-8
 encoding//WebRoot/AccountDealPsswordSet/showAccount.jsp=UTF-8
-encoding//WebRoot/AccountInformation/showAccountInform.jsp=UTF-8
 encoding//WebRoot/AccountLoss/Failloss.jsp=UTF-8
 encoding//WebRoot/AccountLoss/Successloss.jsp=UTF-8
+encoding//WebRoot/SignAccountOtherNameSet/othername.jsp=UTF-8
+encoding//WebRoot/SignAccountOtherNameSet/showAccountSign.jsp=UTF-8
+encoding//WebRoot/SignAccountOtherNameSet/showDealiInformationError.jsp=UTF-8
 encoding//WebRoot/index.jsp=UTF-8

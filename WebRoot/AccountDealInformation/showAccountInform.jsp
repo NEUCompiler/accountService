@@ -42,10 +42,10 @@
 		</div>
 		<div class="col-md-15 column">
 			<ul class="breadcrumb">
-				<li><a href="#">网上交易查询</a></li>
+				<li><a href="#">账户明细查询</a></li>
 				<li><a href="#">选择账户</a></li>
 				<li class="active">选择时间</li>
-				<li><a href="#">显示网上交易明细</a></li>
+				<li><a href="#">显示账户明细</a></li>
 			</ul>
 			<table class="table">
 
@@ -68,7 +68,7 @@
 					<td>${sessionScope.account.othername}</td>
 				<tr />
 			</table>
-			<form action="AccountInformationAction_searchDealInformIsOpen.action">
+			<form action="AccountInformationAction_searchDealInform.action">
 				<div style="margin:20px 0;"></div>
 				开始日期<input id="ddda" name="ddda" class="easyui-datebox"></input>
 				------结束日期<input id="dddb" name="dddb" class="easyui-datebox"></input>

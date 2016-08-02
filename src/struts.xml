@@ -4,31 +4,47 @@
 	<package name="defaults" namespace="/" extends="struts-default">
 		<action name="*_*" class="com.ob.action.{1}" method="{2}">
 			<!-- 储蓄卡挂失 -->
-			
+
 			<result name="zhangdabenshowAccount">/AccountLoss/showAccount.jsp</result>
 			<result name="zhangdabenselectOkLoss">/AccountLoss/confirmPassword.jsp</result>
 			<result name="zhangdabenconfirmFailedLoss">/AccountLoss/confirmPassword.jsp</result>
 			<result name="zhangdabenconfirmSuccessLoss">/AccountLoss/Successloss.jsp</result>
-			
+
 			<!-- 交易密码设置 -->
 			<result name="showAccountDealPasswordSet">/AccountDealPsswordSet/showAccount.jsp</result>
-			<result name="selectOkDealPassword">/AccountDealPsswordSet/confirmPassword.jsp</result>
-			<result name="dealPasswordSetFailed">/AccountDealPsswordSet/confirmPassword.jsp</result>
-			<result name="dealPasswordSetSuccess">/AccountDealPsswordSet/dealPasswordSetSuccess.jsp</result>
+			<result name="selectOkDealPassword">/AccountDealPsswordSet/confirmPassword.jsp
+			</result>
+			<result name="dealPasswordSetFailed">/AccountDealPsswordSet/confirmPassword.jsp
+			</result>
+			<result name="dealPasswordSetSuccess">/AccountDealPsswordSet/dealPasswordSetSuccess.jsp
+			</result>
 			<!-- input：当类型转换错误是返回input -->
 			<result name="input">/login.jsp</result>
-			
+
 			<!-- 储蓄卡账号查询 -->
-			<result name="showAccountInform">/AccountInformation/showAccountIsOpen.jsp</result>
-			<result name="showAccountIsOpenInform">/AccountInformation/showAccount.jsp</result>
 			<result name="showAllAccountInform">/AccountInformation/showAllAccount.jsp</result>
-			<result name="selectOkAccount">/AccountInformation/showAccountInform.jsp</result>
-			
-			<!-- 储蓄卡交易信息查询 -->
-			<result name="showDealInform">/AccountDealInformation/showDealiInformation.jsp</result>
-			<result name="showSignAccount">/AccountDealInformation/showAccountSign.jsp</result>
-			<result name="selectOkSignAccount">/AccountDealInformation/othername.jsp</result>
-		    <result name="issuccess">/AccountDealInformation/showDealiInformationError.jsp</result>
+
+
+			<!-- 储蓄卡账户交易查询 -->
+			<result name="showAccountInform">/AccountDealInformation/showAccount.jsp</result>
+			<result name="selectOkAccount">/AccountDealInformation/showAccountInform.jsp
+			</result>
+			<result name="showDealInform">/AccountDealInformation/showDealiInformation.jsp
+			</result>
+
+			<!-- 账户别名设置 -->
+			<result name="showSignAccount">/SignAccountOtherNameSet/showAccountSign.jsp
+			</result>
+			<result name="selectOkSignAccount">/SignAccountOtherNameSet/othername.jsp</result>
+			<result name="issuccess">/SignAccountOtherNameSet/showDealiInformationError.jsp
+			</result>
+
+			<!-- 储蓄卡网上交易信息查询 -->
+			<result name="showAccountIsOpenInform">/AccountInformation/ShowAccountIsOpen.jsp</result>
+            <result name="selectOkAccountIsopen">/AccountInformation/showAccountInform.jsp</result>
+            <result name="showDealInformIsOpen">/AccountDealInformation/showDealInform.jsp</result>
+
+
 		</action>
 	</package>
 </struts>    

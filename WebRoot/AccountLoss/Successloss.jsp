@@ -38,7 +38,7 @@
 				</div>
 			</div>
 			<div class="col-md-12 column">
-				<p>信用卡:${sessionScope.account}挂失成功。</p>
+				<p>储蓄卡:${sessionScope.account}挂失成功。</p>
 			</div>
 		</div>
 	</div>
