@@ -59,4 +59,8 @@ public interface DealinformDAO {
 
 	public void attachClean(Dealinform instance);
 
+	public boolean addOrUpdatePaymentIn(Dealinform dealinform);
+
+	public boolean addOrUpdatePayment(Dealinform dealinform);
+
 }

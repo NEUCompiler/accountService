@@ -1,9 +1,10 @@
 package com.ob.service;
 
-public class DealinformService {
+import com.ob.model.Dealinform;
 
-	public DealinformService() {
-		// TODO Auto-generated constructor stub
-	}
+public interface DealinformService {
+	public boolean addOrUpdatePayment(Dealinform dealinform);
+	public boolean addOrUpdatePaymentIn(Dealinform dealinform);
+
 
 }

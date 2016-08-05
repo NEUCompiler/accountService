@@ -1,9 +1,26 @@
 package com.ob.service.impl;
 
-public class DealInformServiceImpl {
+import com.ob.dao.DealinformDAO;
+import com.ob.model.Dealinform;
+import com.ob.service.DealinformService;
 
-	public DealInformServiceImpl() {
-		// TODO Auto-generated constructor stub
+public class DealInformServiceImpl implements DealinformService {
+	private DealinformDAO dealinformDAO;
+
+	public DealinformDAO getDealinformDAO() {
+		return dealinformDAO;
 	}
-
+	public void setDealinformDAO(DealinformDAO dealinformDAO) {
+		this.dealinformDAO = dealinformDAO;
+	}
+	@Override
+	public boolean addOrUpdatePayment(Dealinform dealinform) {
+		// TODO Auto-generated method stub
+		return dealinformDAO.addOrUpdatePayment(dealinform);
+	}
+	@Override
+	public boolean addOrUpdatePaymentIn(Dealinform dealinform) {
+		// TODO Auto-generated method stub
+		return dealinformDAO.addOrUpdatePaymentIn(dealinform);
+	}
 }

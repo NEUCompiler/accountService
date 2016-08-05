@@ -1,10 +1,17 @@
 package com.ob.action;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -52,7 +59,7 @@ public class AccountInformationAction extends SuperAction implements
 				accountService.getCdsOfClientByAccount(account));
 		return "showAccountInform";
 	}
-	
+
 	public String showAccountIsOpen() {
 		account.setClientid(111);
 		session.setAttribute("clientId", 111);
@@ -66,7 +73,8 @@ public class AccountInformationAction extends SuperAction implements
 		ArrayList<Account> accountList = new ArrayList<Account>();
 		ArrayList<Account> accountLista = new ArrayList<Account>();
 		ArrayList<Account> accountListb = new ArrayList<Account>();
-		accountList = (ArrayList<Account>) clientService.getAccountDao().findByClientid(client.getClientid());
+		accountList = (ArrayList<Account>) clientService.getAccountDao()
+				.findByClientid(client.getClientid());
 		for (com.ob.model.Account item : accountList) {
 			if (item.getCdlimit() > 0) {
 				accountLista.add(item);
@@ -76,8 +84,8 @@ public class AccountInformationAction extends SuperAction implements
 
 			}
 		}
-		request.setAttribute("cardTypea", "‰ø°Áî®Âç°");
-		request.setAttribute("cardTypeb", "ÂÇ®ËìÑÂç°");
+		request.setAttribute("cardTypea", "–≈”√ø®");
+		request.setAttribute("cardTypeb", "¥¢–Óø®");
 		request.setAttribute("accountLista", accountLista);
 		request.setAttribute("accountListb", accountListb);
 		return "showAllAccountInform";
@@ -88,41 +96,40 @@ public class AccountInformationAction extends SuperAction implements
 				request.getParameter("selectAccount"));
 
 		if (account.getCdlimit() > 0) {
-			request.setAttribute("cardType", "‰ø°Áî®Âç°");
+			request.setAttribute("cardType", "–≈”√ø®");
 		} else {
-			request.setAttribute("cardType", "ÂÇ®ËìÑÂç°");
+			request.setAttribute("cardType", "¥¢–Óø®");
 		}
-		
-		if (account.getIsopenob()==0) {
-			request.setAttribute("obType", "Êú™ÂºÄÈÄöÁΩëÈì∂");
+
+		if (account.getIsopenob() == 0) {
+			request.setAttribute("obType", "Œ¥ø™Õ®Õ¯“¯");
 		} else {
-			request.setAttribute("obType", "Â∑≤ÂºÄÈÄöÁΩëÈì∂");
+			request.setAttribute("obType", "“—ø™Õ®Õ¯“¯");
 		}
 
 		session.setAttribute("account", account);
 		return "selectOkAccount";
 	}
-	
+
 	public String selectCardIsOpen() {
 		account = accountService.getDao().findById(
 				request.getParameter("selectAccount"));
 
 		if (account.getCdlimit() > 0) {
-			request.setAttribute("cardType", "‰ø°Áî®Âç°");
+			request.setAttribute("cardType", "–≈”√ø®");
 		} else {
-			request.setAttribute("cardType", "ÂÇ®ËìÑÂç°");
+			request.setAttribute("cardType", "¥¢–Óø®");
 		}
-		
-		if (account.getIsopenob()==0) {
-			request.setAttribute("obType", "Êú™ÂºÄÈÄöÁΩëÈì∂");
+
+		if (account.getIsopenob() == 0) {
+			request.setAttribute("obType", "Œ¥ø™Õ®Õ¯“¯");
 		} else {
-			request.setAttribute("obType", "Â∑≤ÂºÄÈÄöÁΩëÈì∂");
+			request.setAttribute("obType", "“—ø™Õ®Õ¯“¯");
 		}
 
 		session.setAttribute("account", account);
 		return "selectOkAccountIsopen";
 	}
-	
 
 	public String searchDealInform() throws ParseException {
 		ApplicationContext c = new ClassPathXmlApplicationContext(
@@ -134,7 +141,7 @@ public class AccountInformationAction extends SuperAction implements
 		ArrayList<Dealinform> dealInfoList = new ArrayList<Dealinform>();
 		session.getAttribute("account");
 		System.out.println(account);
-		String accountid=account.getAccountid();
+		String accountid = account.getAccountid();
 		System.out.println(accountid);
 		String sql = "from com.ob.model.Dealinform where accountid=?";
 		String a = request.getParameter("ddda");
@@ -152,8 +159,7 @@ public class AccountInformationAction extends SuperAction implements
 		return "showDealInform";
 
 	}
-	
-	
+
 	public String searchDealInformIsOpen() throws ParseException {
 		ApplicationContext c = new ClassPathXmlApplicationContext(
 				"applicationContext.xml");
@@ -164,14 +170,14 @@ public class AccountInformationAction extends SuperAction implements
 		ArrayList<Dealinform> dealInfoList = new ArrayList<Dealinform>();
 		session.getAttribute("account");
 		System.out.println(account);
-		String accountid=account.getAccountid();
+		String accountid = account.getAccountid();
 		System.out.println(accountid);
 		String sql = "from com.ob.model.Dealinform where accountid=? ";
 		String a = request.getParameter("ddda");
 		String b = request.getParameter("dddb");
 		if (null != a && a != "") {
 			sql += " and dealtime > str_to_date('" + a + "','%m/%d/%Y')";
-			
+
 		}
 		if (null != b && b != "") {
 			sql += " and dealtime < str_to_date('" + b + "','%m/%d/%Y')";
@@ -179,12 +185,13 @@ public class AccountInformationAction extends SuperAction implements
 		Query queryObject = session1.createQuery(sql);
 		queryObject.setString(0, accountid);
 		List result = queryObject.list();
-		
+
 		request.setAttribute("result", result);
 		return "showDealInformIsOpen";
-	
-		
+
 	}
+
+	
 
 
 	public Account getModel() {

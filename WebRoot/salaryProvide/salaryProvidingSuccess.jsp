@@ -9,7 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'salaryProvidingSuccess.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -19,18 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
-
   </head>
   
   <body>
-     <a href="AccountLossAction_showAccount.action">账户口头挂失</a></br>
-     <a href="AccountDealPasswordSetAction_showAccount.action">密码修改</a><br>
-     <a href="AccountInformationAction_showAccount.action">账户明细查询</a></br>
-     <a href="AccountInformationAction_showAccountIsOpen.action">网上交易查询</a></br>
-     <a href="AccountSignAction_showAccount.action">关联账户管理</a><br>
-     <a href="AccountInformationAction_showAllAccount.action">账户信息查询</a><br>
-     <a href="SalaryProvidingAction_showAccountIsOpen.action">工资代发</a><br>
-      
-     
+   成功 <br>
   </body>
 </html>

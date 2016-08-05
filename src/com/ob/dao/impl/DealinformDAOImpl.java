@@ -1,6 +1,9 @@
 package com.ob.dao.impl;
 
+import java.util.Iterator;
 import java.util.List;
+
+import javax.transaction.Transaction;
 
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
@@ -12,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 
 import com.ob.dao.DealinformDAO;
+import com.ob.model.Account;
 import com.ob.model.Dealinform;
 
 public class DealinformDAOImpl implements DealinformDAO{
@@ -175,6 +179,67 @@ public class DealinformDAOImpl implements DealinformDAO{
 			throw re;
 		}
 	}
+	
+	public boolean addOrUpdatePayment(Dealinform dealinform) {
+		// TODO Auto-generated method stub
+		Session session1 = sessionFactory.openSession();
+		session1.beginTransaction();
+		try {
+			session1.saveOrUpdate(dealinform);
+			Account account = new Account();
+			String Accountid=dealinform.getAccountid();
+			Query query=session1.createQuery("From Account where accountid ='"+Accountid+"'");
+			List list=query.list();
+			Iterator<Account> iterator=list.iterator();
+			while(iterator.hasNext()){
+					account=iterator.next();
+						Integer integer=account.getAmount()-dealinform.getDeaamountl();
+						account.setAmount(integer);
+			}
+			
+			session1.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			session1.getTransaction().rollback();
+			session1.close();
+			return false;
+		}
+		session1.close();
+		return true;
+	}
+	
+	//修改dealinform并转入账户余额accountAmount增加
+		public boolean addOrUpdatePaymentIn(Dealinform dealinform) {
+			// TODO Auto-generated method stub
+			Session session2 = sessionFactory.openSession();
+			 session2.beginTransaction();
+			try {
+				session2.saveOrUpdate(dealinform);
+				Account account = new Account();
+				String Accountid=dealinform.getAccountid();
+				Query query=session2.createQuery("From Account where accountid ='"+Accountid+"'");
+				List list=query.list();
+				Iterator<Account> iterator=list.iterator();
+				while(iterator.hasNext()){
+						account=iterator.next();
+						Integer integer=account.getAmount()+dealinform.getDeaamountl();
+						account.setAmount(integer);
+						session2.saveOrUpdate(account);
+								
+					}
+				session2.getTransaction().commit();
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				session2.getTransaction().rollback();
+			}
+			session2.close();
+			return true;
+		}
+
+	
+	
 
 	public static DealinformDAO getFromApplicationContext(ApplicationContext ctx) {
 		return (DealinformDAO) ctx.getBean("DealinformDAO");

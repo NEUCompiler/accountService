@@ -64,6 +64,12 @@
 		<property name="clientDAO" ref="clientDAO" />
 		<property name="dao" ref="accountDAO" />
 	</bean>
+	
+	<bean id="dealinformService" class="com.ob.service.impl.DealInformServiceImpl" scope="singleton">
+		<property name="dealinformDAO" ref="dealinformDAO" ></property>
+	</bean>
+	
+	
 	<bean id="AccountLossAction" class="com.ob.action.AccountLossAction"
 		scope="prototype">
 		<property name="accountService" ref="accountService"></property>
@@ -76,5 +82,10 @@
 		scope="prototype">
 		<property name="accountService" ref="accountService"></property>
 		<property name="clientService" ref="clientService"></property>
+	</bean>
+	<bean id="SalaryProviding" class="com.ob.action.SalaryProvidingAction"
+		scope="prototype">
+		<property name="accountService" ref="accountService"></property>
+		<property name="dealinformService" ref="dealinformService"></property>
 	</bean>
 </beans>

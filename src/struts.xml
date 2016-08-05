@@ -40,11 +40,17 @@
 			</result>
 
 			<!-- 储蓄卡网上交易信息查询 -->
-			<result name="showAccountIsOpenInform">/AccountInformation/ShowAccountIsOpen.jsp</result>
-            <result name="selectOkAccountIsopen">/AccountInformation/showAccountInform.jsp</result>
-            <result name="showDealInformIsOpen">/AccountInformation/showDealInform.jsp</result>
+			<result name="showAccountIsOpenInform">/AccountInformation/ShowAccountIsOpen.jsp
+			</result>
+			<result name="selectOkAccountIsopen">/AccountInformation/showAccountInform.jsp
+			</result>
+			<result name="showDealInformIsOpen">/AccountInformation/showDealInform.jsp</result>
 
-
+			<!-- 代付工资 -->
+			<result name="showCompanyAccount">/salaryProvide/selectAccountIsOpen.jsp</result>
+			<result name="success">/salaryProvide/documentUploading.jsp</result>
+			<result name="SalaryProvidingFailed">/salaryProvide/salaryProvidingFailed.jsp</result>
+			<result name="selectSalaryProviding">/salaryProvide/salaryProvidingSuccess.jsp</result>
 		</action>
 	</package>
 </struts>    

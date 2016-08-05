@@ -37,10 +37,10 @@
 			</ul>
 			<form action="AccountInformationAction_selectCard.action">
 
-				<select name="selectAccount"  class="form-control">
+				<select name="selectAccount" >
 					<c:forEach items="${request.accountIdList}" var="li">
 
-						<option value=${li}>${li}</option>
+						<option>${li}</option>
 
 					</c:forEach>
 				</select>
