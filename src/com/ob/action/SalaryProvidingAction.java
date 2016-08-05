@@ -3,7 +3,9 @@ package com.ob.action;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -101,8 +103,7 @@ ModelDriven<Account>{
 		
 		public String showExcel() throws BiffException, IOException  {
 			Map session1=(Map) ActionContext.getContext().getSession();
-			Dealinform dealinform1 = new Dealinform();//转出交易信息
-			Dealinform dealinform2 = new Dealinform();//转入建议信息
+			
 			boolean password = false;
 			boolean amount = false;
 			//int dpw = 0;//通过accountid取出对应账户的dealpassword
@@ -112,8 +113,8 @@ ModelDriven<Account>{
 			//am = paymentService.getAccountAmount(accountid);
 		   //  Date date= new Date();
 		    Date date= new java.sql.Date(new java.util.Date().getTime());
-			
-
+		    ArrayList<Dealinform> dealInfoList1 = new ArrayList<Dealinform>();
+		    List<Dealinform> dealInfoList2 = new ArrayList<Dealinform>();
 			account = (Account) session.getAttribute("account");
 		    workbook = Workbook.getWorkbook(theFile);
 		    sheet=workbook.getSheet(0);
@@ -134,10 +135,13 @@ ModelDriven<Account>{
 			else{
 			
 			for (int i = 1; i < sheet.getRows(); i++) {
-				
+				Dealinform dealinform1 = new Dealinform();//转出交易信息
+				Dealinform dealinform2 = new Dealinform();//转入建议信息
 				Cell cella = sheet.getCell(0, i);
 				String desti=cella.getContents();
 				Cell cellb = sheet.getCell(1, i);
+				Cell cellc = sheet.getCell(2, i);
+				String dealtype=cellc.getContents();
 				int salaryamount=Integer.parseInt(cellb.getContents());
 				String dealid1 = UUID.randomUUID().toString();
 				String dealid2 = UUID.randomUUID().toString();
@@ -145,25 +149,28 @@ ModelDriven<Account>{
 				dealinform1.setDeaamountl(salaryamount);
 				dealinform1.setDealDesti(desti);
 				dealinform1.setDealid(dealid1);
-				dealinform1.setDealinform("salaryProvide");
+				dealinform1.setDealinform(dealtype);
 				dealinform1.setDealstate(0);
 				dealinform1.setDealtime(date);
 				dealinform1.setDealtype(0);
+				dealInfoList1.add(dealinform1);
 				
 				dealinform2.setAccountid(desti);
 				dealinform2.setDeaamountl(salaryamount);
 				dealinform2.setDealDesti(account.getAccountid());
 				dealinform2.setDealid(dealid2);
-				dealinform2.setDealinform("ReceiveSalary");
+				dealinform2.setDealinform(dealtype);
 				dealinform2.setDealstate(0);
 				dealinform2.setDealtime(date);
 				dealinform2.setDealtype(1);
+				dealInfoList2.add(dealinform2);
 				password = dealinformService.addOrUpdatePayment(dealinform1)&dealinformService.addOrUpdatePaymentIn(dealinform2);
 			}
 			
 			workbook.close();
 			}
-			
+			//request.setAttribute("dealInfoList1",dealInfoList1) ;
+			request.setAttribute("dealInfoList2",dealInfoList2);
 			if( password==true)
 		   return "selectSalaryProviding";
 			else {
